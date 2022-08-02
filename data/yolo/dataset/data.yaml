@@ -1,0 +1,9 @@
+path: /Users/adam/Git/agricam/data/yolo/dataset
+train: images/train
+val: images/test
+
+# number of classes
+nc: 1
+
+# class names
+names: ["cowface"]
