@@ -21,11 +21,11 @@ def get_text(filename: str, therm: bool):
     return txt
 
 
-path = 'data/pictures/05.08.22/norm/'
+path = 'data/pictures/05.08.22/therm/'
 for f in os.listdir(path):
     if f[-4:] == '.jpg':
         print(path + f)
-        text = get_text(filename=path + f, therm=False)
+        text = get_text(filename=path + f, therm=True)
         text = text.replace(':', '')
         text = text.replace(' ', '_')
         text = text.strip()
