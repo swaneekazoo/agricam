@@ -62,14 +62,9 @@ def frame_to_annotation(src, frame, dest):
     makedirs(f'{dest}/labels', exist_ok=True)
     with open(f'{dest}/labels/{frame.split(".")[0]}.txt', 'w') as text_file:
         for cnt in cnts:
-            # Debug with blue box (thermal)
-            # x = THERM_BOX_X
-            # y = THERM_BOX_Y
-            # w = THERM_BOX_W
-            # h = THERM_BOX_H
             x, y, w, h = cv2.boundingRect(cnt)
-            x, y, w, h = transform_boundingrect(x, y, w, h)
-            # Convert to proportion of image size for YOLO compliance
+            x, y, w, h = transform_bounding_rect(img, x, y, w, h)
+            # Convert to proportion of image size
             x /= NORM_W
             y /= NORM_H
             w /= NORM_W
@@ -77,23 +72,16 @@ def frame_to_annotation(src, frame, dest):
             text_file.write(f'0 {x} {y} {w} {h}\n')
 
 
-def transform_boundingrect(x, y, w, h):
+def transform_bounding_rect(img, x, y, w, h):
     """
     Transform `x`, `y`, `w`, and `h` of a bounding rectangle drawn on a thermal image to match the corresponding optical image
     """
-
-    # img = cv2.imread('/Users/adam/git/agricam/data/video/clean thermal/norm/frames/001.png', 0)
-    # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 10)
-    # cv2.imwrite('/Users/adam/git/agricam/data/video/clean thermal/norm/frames/001-0.png', img)
 
     # x, y, w, h * 2.1
     x = round(x * SCALE_W)
     y = round(y * SCALE_H)
     w = round(w * SCALE_W)
     h = round(h * SCALE_H)
-
-    # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 10)
-    # cv2.imwrite('/Users/adam/git/agricam/data/video/clean thermal/norm/frames/001-1.png', img)
 
     # x, y - centre
     x -= NORM_CENTRE_X
@@ -109,15 +97,9 @@ def transform_boundingrect(x, y, w, h):
     x = round(x + NORM_CENTRE_X)
     y = round(y + NORM_CENTRE_Y)
 
-    # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 10)
-    # cv2.imwrite('/Users/adam/git/agricam/data/video/clean thermal/norm/frames/001-2.png', img)
-
     # x, y + box centre offset
     x += round(BOX_CENTRE_OFFSET_X)
     y += round(BOX_CENTRE_OFFSET_Y)
-
-    # cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 10)
-    # cv2.imwrite('/Users/adam/git/agricam/data/video/clean thermal/norm/frames/001-3.png', img)
 
     return x, y, w, h
 
