@@ -63,7 +63,7 @@ def frames_to_dataset(frames_src: str, dest: str, test_split: float):
 
 def frame_to_face(frame):
     # Model
-    model = torch.hub.load(repo_or_dir='ultralytics/yolov5', model='custom', path='best.pt')  # or yolov5n - yolov5x6, custom
+    model = torch.hub.load(repo_or_dir='ultralytics/yolov5', model='custom', path='best.pt')
     for f in os.listdir('/Users/adam/git/agricam/data/video/clean thermal/norm/frames'):
         # Images
         img = f'/Users/adam/git/agricam/data/video/clean thermal/norm/frames/{f}'

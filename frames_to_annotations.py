@@ -39,7 +39,7 @@ SCALE_BOX_H = NORM_BOX_H / (THERM_BOX_H * SCALE_H)
 
 def frame_to_annotation(src, frame, dest):
     """
-    Generate YOLO-compliant label from thermal image to apply to the corresponding optical image
+    Use thermal image `src/frame` to generate YOLO-compliant label file for the corresponding optical image, saving to `dest`.
     """
     img = cv2.imread(f'{src}/{frame}', 0)
 
@@ -74,7 +74,7 @@ def frame_to_annotation(src, frame, dest):
 
 def transform_bounding_rect(img, x, y, w, h):
     """
-    Transform `x`, `y`, `w`, and `h` of a bounding rectangle drawn on a thermal image to match the corresponding optical image
+    Transform `x`, `y`, `w`, and `h` of bounding rectangle from a thermal image to match the corresponding optical image
     """
 
     # x, y, w, h * 2.1
