@@ -1,0 +1,54 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https`://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "video_to_frames (norm)",
+            "type": "python",
+            "request": "launch",
+            "program": "video_to_frames.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-s",
+                "/Users/adam/Git/agricam/data/video/clean thermal/norm",
+                "-d",
+                "/Users/adam/Git/agricam/data/video/clean thermal/norm/frames",
+                "-t",
+                "0.3"
+            ]
+        },
+        {
+            "name": "video_to_frames (therm)",
+            "type": "python",
+            "request": "launch",
+            "program": "video_to_frames.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-s",
+                "/Users/adam/Git/agricam/data/video/clean thermal/therm",
+                "-d",
+                "/Users/adam/Git/agricam/data/video/clean thermal/therm/frames",
+                "-t",
+                "0.3"
+            ]
+        },
+        {
+            "name": "frames_to_labels",
+            "type": "python",
+            "request": "launch",
+            "program": "/Users/adam/Git/agricam/frames_to_labels.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-s",
+                "/Users/adam/Git/agricam/data/video/clean thermal/therm/frames",
+                "-d",
+                "/Users/adam/Git/agricam/data/video/clean thermal/norm/frames/labels"
+            ]
+        }
+    ]
+}
