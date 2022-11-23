@@ -23,9 +23,5 @@ Weights for a YOLOv5l model trained on a sample of the `clean thermal` dataset
 3. Transform bounding boxes so they apply to the corresponding optical image
 4. Write the resulting bounding boxes in YOLO .txt annotation format to `--out`
 
-### frames_to_faces
-1. Read images from `--in`
-2. For each image, run YOLO inference and write the cropped faces to `--out`. Sort faces by-cow, and into train and test sets according to `--test_split`.
-
 ### video_to_demo
 Process recording of optical & thermal images side-by-side, superimposing bounding boxes obtained by Otsu thresholding (thermal) and YOLO inference (normal).
