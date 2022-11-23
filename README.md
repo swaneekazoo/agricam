@@ -17,11 +17,11 @@ Weights for a YOLOv5l model trained on a sample of the `clean thermal` dataset
 3. Split into frames and write to `--out`
 4. ~~Sort frames by-cow, and by train and test according to `--test_split`~~
 
-### frames_to_annotations
+### frames_to_labels
 1. Read frames from `--in` (thermal images)
 2. For each frame, perform Otsu thresholding and return the bounding boxes of the two biggest contours
 3. Transform bounding boxes so they apply to the corresponding optical image
-4. Write the resulting bounding boxes in YOLO annotation format to .txt files in `--out`
+4. Write the resulting bounding boxes in YOLO .txt annotation format to `--out`
 
 ### frames_to_faces
 1. Read images from `--in`
