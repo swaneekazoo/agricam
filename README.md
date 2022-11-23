@@ -11,6 +11,9 @@ Weights for a YOLOv5l model trained on a sample of the `clean thermal` dataset
 2. Perform OCR on the timestamps using Tesseract
 3. Rename files in `--in` accordingly
 
+### `video` and `frames`
+Contain routines for video and still image data.
+
 ### video_to_frames
 1. Read videos from `--in`
 2. Concatenate into a single video
