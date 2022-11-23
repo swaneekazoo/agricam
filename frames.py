@@ -149,6 +149,10 @@ def transform_bounding_rect(img, x, y, w, h):
 
 
 def frames_to_dataset(frames_src: str, dest: str, test_split: float):
+    """
+    Organise frames in `frames_src` by cow based on value of `TIME_ONSCREEN` (assuming the carousel does not stop and there are no empty pens).
+    Later adapted to crop faces from frames (via YOLO inference) and organise by cow.
+    """
     cow_num = 0
     seed(0)
     frames = sorted((f for f in listdir(frames_src) if not f.startswith(".") and not isdir(f'{frames_src}/{f}')),
@@ -157,7 +161,7 @@ def frames_to_dataset(frames_src: str, dest: str, test_split: float):
     for i, frame in enumerate(frames):
         subset = random.random()
         imgs = []
-        results = model(frame)
+        results = MODEL(frame)
         crops = results.crop()
         for crop in crops:
             imgs.append(crop.im)
